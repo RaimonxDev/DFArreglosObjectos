@@ -45,4 +45,56 @@ const ventas = [
   }
 ];
 
-export default ventas;
+const containerVenta = document.getElementById('venta');
+
+const cardTemplateWithCol = (propiedad) => {
+  return `
+  <div class="col-md-4 mb-4">
+    <div class="card">
+      <img
+        src="${propiedad.src}"
+        class="card-img-top"
+        alt="${propiedad.nombre}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">
+          ${propiedad.nombre}
+        </h5>
+        <p class="card-text">
+          ${propiedad.descripcion}
+        </p>
+        <p>
+          <i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}
+        </p>
+        <p>
+          bathroom: 1,<i class="fas fa-bed"></i> ${propiedad.habitaciones} |
+          <i class="fas fa-bath"></i> ${propiedad.bathroom}
+        </p>
+        <p>
+        <i class="fas fa-dollar-sign"></i>${propiedad.costo}
+        </p>
+        <p class=${propiedad.smoke ? 'text-success' : 'text-danger'}>
+          <i class="${propiedad.smoke ? 'fas fa-smoking' : 'fas fa-smoking-ban'}"></i>
+          ${propiedad.smoke ? 'Permitido fumar' : 'No se permite fumar'}
+        </p>
+        <p class="${propiedad.pets ? 'text-success' : 'text-danger'}">
+          <i class="${propiedad.pets ? 'fas fa-paw' : 'fas fa-ban'}"></i>
+          ${propiedad.pets ? 'Mascotas permitidas' : 'No se permiten mascotas'}
+        </p>
+      </div>
+    </div>
+  </div>
+  `;
+}
+let rowVenta = containerVenta.querySelector('.row')
+
+document.addEventListener('DOMContentLoaded', () => {
+  showCard(4)
+})
+
+showCard = (cantidad) => {
+  ventas.forEach((propiedad, index) => {
+    if (index > cantidad - 1) { return }
+    rowAlquiler.innerHTML += cardTemplateWithCol(propiedad);
+  })
+}
