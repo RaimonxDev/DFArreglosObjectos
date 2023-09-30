@@ -95,6 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
 showCard = (cantidad) => {
   ventas.forEach((propiedad, index) => {
     if (index > cantidad - 1) { return }
-    rowAlquiler.innerHTML += cardTemplateWithCol(propiedad);
+    rowVenta.innerHTML += cardTemplateWithCol(propiedad);
   })
 }
