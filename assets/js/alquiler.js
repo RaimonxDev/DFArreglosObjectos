@@ -1,7 +1,7 @@
-const alquiler = [
+export const alquiler = [
   {
     nombre: 'Apartamento amueblado',
-    src: 'https://cdn.bioguia.com/embed/3d0fb0142790e6b90664042cbafcb1581427139/furgoneta.jpg',
+    src: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60',
     descripcion: 'Apartamento completamente amueblado para alquilar.',
     ubicacion: 'Barrio Residencial, Ciudad Tranquila',
     bathroom: 4,
@@ -12,7 +12,7 @@ const alquiler = [
   },
   {
     nombre: 'Casa de campo para alquilar',
-    src: 'https://cdn.bioguia.com/embed/3d0fb0142790e6b90664042cbafcb1581427139/furgoneta.jpg',
+    src: 'https://resizer.glanacion.com/resizer/fhK-tSVag_8UGJjPMgWrspslPoU=/768x0/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/CUXVMXQE4JD5XIXX4X3PDZAVMY.jpg',
     descripcion: 'Encantadora casa de campo en alquiler para escapadas.',
     ubicacion: 'Montañas Verdes, Zona Rural',
     bathroom: 1,
@@ -23,7 +23,7 @@ const alquiler = [
   },
   {
     nombre: 'Piso con vista panorámica',
-    src: 'https://cdn.bioguia.com/embed/3d0fb0142790e6b90664042cbafcb1581427139/furgoneta.jpg',
+    src: 'https://images.unsplash.com/photo-1505691723518-36a5ac3be353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
     descripcion: 'Piso con vista panorámica de la ciudad.',
     ubicacion: 'Centro Urbano, Ciudad Activa',
     bathroom: 2,
@@ -34,7 +34,7 @@ const alquiler = [
   },
   {
     nombre: 'Apartamento cerca de la playa',
-    src: 'https://cdn.bioguia.com/embed/3d0fb0142790e6b90664042cbafcb1581427139/furgoneta.jpg',
+    src: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1748&q=80',
     descripcion: 'Apartamento a pocos pasos de la playa.',
     ubicacion: 'Playa Dorada, Ciudad Costera',
     bathroom: 1,
@@ -44,58 +44,3 @@ const alquiler = [
     pets: false
   }
 ];
-
-const containerAlquiler = document.getElementById('alquiler');
-let rowAlquiler = containerAlquiler.querySelector('.row');
-
-
-const cardTemplateWithCol = (propiedad) => {
-  return `
-  <div class="col-md-4 mb-4">
-    <div class="card">
-      <img
-        src="${propiedad.src}"
-        class="card-img-top"
-        alt="${propiedad.nombre}"
-      />
-      <div class="card-body">
-        <h5 class="card-title">
-          ${propiedad.nombre}
-        </h5>
-        <p class="card-text">
-          ${propiedad.descripcion}
-        </p>
-        <p>
-          <i class="fas fa-map-marker-alt"></i> ${propiedad.ubicacion}
-        </p>
-        <p>
-          bathroom: 1,<i class="fas fa-bed"></i> ${propiedad.habitaciones} |
-          <i class="fas fa-bath"></i> ${propiedad.bathroom}
-        </p>
-        <p>
-        <i class="fas fa-dollar-sign"></i>${propiedad.costo}
-        </p>
-        <p class=${propiedad.smoke ? 'text-success' : 'text-danger'}>
-          <i class="${propiedad.smoke ? 'fas fa-smoking' : 'fas fa-smoking-ban'}"></i>
-          ${propiedad.smoke ? 'Permitido fumar' : 'No se permite fumar'}
-        </p>
-        <p class="${propiedad.pets ? 'text-success' : 'text-danger'}">
-          <i class="${propiedad.pets ? 'fas fa-paw' : 'fas fa-ban'}"></i>
-          ${propiedad.pets ? 'Mascotas permitidas' : 'No se permiten mascotas'}
-        </p>
-      </div>
-    </div>
-  </div>
-  `;
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  showCard(4);
-})
-
-showCard = (cantidad) => {
-  alquiler.forEach((propiedad, index) => {
-    if (index > cantidad - 1) { return }
-    rowAlquiler.innerHTML += cardTemplateWithCol(propiedad);
-  })
-}
